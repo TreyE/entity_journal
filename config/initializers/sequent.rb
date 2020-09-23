@@ -1,4 +1,5 @@
 require_relative '../sequent_migrations'
+require_relative "../../app/sequent/init"
   
 Sequent.configure do |config|
  config.migrations_class_name = 'SequentMigrations'
@@ -9,6 +10,7 @@ Sequent.configure do |config|
   
  config.event_handlers = [
    # add you Sequent::Projector's or Sequent::Workflows's here
+   EntityUpdateNotificationProjector
  ]
 
  config.database_config_directory = 'config'
