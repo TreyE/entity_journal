@@ -14,7 +14,7 @@ describe EntityUpdateNotificationCommandHandler do
 
   it "results in a categorization requested event" do
     given_events EntityUpdateNotificationConsumed.new(aggregate_id: "abcde", event_body: "some xml", sequence_number: 1)
-    when_command CategorizeEntityUpdateNotification.new(aggregate_id: "abcde", event_body: "some xml")
+    when_command CategorizeEntityUpdateNotification.new(aggregate_id: "abcde")
     then_events EntityUpdateNotificationCategorizationRequested
   end
 end

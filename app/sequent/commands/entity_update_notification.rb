@@ -5,7 +5,7 @@ class ConsumeEntityUpdateNotification < Sequent::Command
 end
 
 class CategorizeEntityUpdateNotification < Sequent::Command
-  attrs aggregate_id: String, event_body: String
+  attrs aggregate_id: String
   validates :aggregate_id, presence: true,
                     length: { minimum: 5 }
 end

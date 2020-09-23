@@ -5,7 +5,7 @@ class EntityUpdateNotification < Sequent::AggregateRoot
   end
 
   def begin_categorization(command)
-    apply EntityUpdateNotificationCategorizationRequested, {aggregate_id: command.aggregate_id, event_body: command.event_body, version: @version + 1}
+    apply EntityUpdateNotificationCategorizationRequested, {aggregate_id: command.aggregate_id, event_body: @event_body, version: @version + 1}
   end
 
   on EntityUpdateNotificationConsumed do |event|
