@@ -10,7 +10,8 @@ Sequent.configure do |config|
   
  config.event_handlers = [
    # add you Sequent::Projector's or Sequent::Workflows's here
-   EntityUpdateNotificationProjector.new
+   EntityUpdateNotificationProjector.new,
+   EntityUpdateNotificationWorkflow.new
  ]
 
  config.database_config_directory = 'config'
