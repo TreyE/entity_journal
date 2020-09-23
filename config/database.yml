@@ -15,6 +15,7 @@
 # gem 'pg'
 #
 default: &default
+  schema_search_path: "public, sequent_schema, view_schema"
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
