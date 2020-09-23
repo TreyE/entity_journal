@@ -1,2 +1,6 @@
+require_relative "events/entity_update_notification"
+require_relative "aggregates/entity_update_notification"
+require_relative "commands/entity_update_notification"
 require_relative "records/entity_update_notification_record"
+require_relative "command_handlers/entity_update_notification"
 require_relative "projectors/entity_update_notification_projector"

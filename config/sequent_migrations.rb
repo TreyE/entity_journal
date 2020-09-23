@@ -9,7 +9,7 @@
      {
        '1' => [
          EntityUpdateNotificationProjector
-       ],
+       ]
      }
    end
  end
