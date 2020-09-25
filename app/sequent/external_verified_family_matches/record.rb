@@ -1,0 +1,2 @@
+class ExternalVerifiedFamilyMatchRecord < Sequent::ApplicationRecord
+end

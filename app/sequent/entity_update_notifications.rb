@@ -1,0 +1,7 @@
+require_relative "entity_update_notifications/events"
+require_relative "entity_update_notifications/commands"
+require_relative "entity_update_notifications/record"
+require_relative "entity_update_notifications/aggregate_root"
+require_relative "entity_update_notifications/command_handlers"
+require_relative "entity_update_notifications/projector"
+require_relative "entity_update_notifications/workflows"

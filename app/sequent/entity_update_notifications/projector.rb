@@ -24,4 +24,30 @@ class EntityUpdateNotificationProjector < Sequent::Projector
       }
     )
   end
+
+  on EntityUpdateNotificationCategorizationFailed do |event|
+    create_record(
+      EntityUpdateNotificationRecord,
+      {
+        aggregate_id: event.aggregate_id,
+        message_body: event.event_body,
+        status: event.status,
+        error_messages: event.error_messages,
+        version: event.version
+      }
+    )
+  end
+
+  on EntityUpdateNotificationCategorizationSuccessful do |event|
+    create_record(
+      EntityUpdateNotificationRecord,
+      {
+        aggregate_id: event.aggregate_id,
+        message_body: event.event_body,
+        status: "completed",
+        version: event.version,
+        entity_name: event.entity_name
+      }
+    )
+  end
 end

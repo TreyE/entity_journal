@@ -8,7 +8,8 @@
    def self.versions
      {
        '1' => [
-         EntityUpdateNotificationProjector
+         EntityUpdateNotificationProjector,
+         ExternalVerifiedFamilyMatchProjector
        ]
      }
    end
