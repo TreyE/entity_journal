@@ -1,0 +1,5 @@
+<h1>HI</h1>
+
+<% @entity_update_notifications.each do |record| %>
+  <%= record.aggregate_id %> <%= record.status %>
+<% end %>

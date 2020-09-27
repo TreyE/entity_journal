@@ -2,6 +2,8 @@ require_relative '../sequent_migrations'
 require_relative "../../app/sequent/init"
   
 Sequent.configure do |config|
+  config.logger = Logger.new(STDOUT)
+
  config.migrations_class_name = 'SequentMigrations'
   
  config.command_handlers = [

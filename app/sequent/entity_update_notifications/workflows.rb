@@ -2,12 +2,12 @@ require 'securerandom'
 
 class EntityUpdateNotificationWorkflow < Sequent::Workflow
   on EntityUpdateNotificationConsumed do |event|
+    categorize_command = CategorizeEntityUpdateNotification.new({
+      aggregate_id: event.aggregate_id
+    })
+
     after_commit do
-      categorize_command = CategorizeEntityUpdateNotification.new({
-        aggregate_id: event.aggregate_id,
-        event_body: event.event_body
-      })
-      Sequent.command_service.execute_commands categorize_command
+      execute_commands categorize_command
     end
   end
 
@@ -19,7 +19,7 @@ class EntityUpdateNotificationWorkflow < Sequent::Workflow
         status: "xml_parsing_failed",
         error_messages: parsed_xml.errors.to_json
       })
-      Sequent.command_service.execute_commands xml_parse_failed_command
+      execute_commands xml_parse_failed_command
     else
       categorized_info = categorize_xml(parsed_xml)
       case categorized_info
@@ -28,13 +28,13 @@ class EntityUpdateNotificationWorkflow < Sequent::Workflow
           aggregate_id: event.aggregate_id,
           entity_name: "external_verified_family"
         })
-        Sequent.command_service.execute_commands categorize_success_command
+        execute_commands categorize_success_command
       else
         xml_parse_failed_command = FailEntityUpdateNotificationCategorization.new({
           aggregate_id: event.aggregate_id,
           status: "unknown_root_entity"
         })
-        Sequent.command_service.execute_commands xml_parse_failed_command
+        execute_commands xml_parse_failed_command
       end
     end
   end
@@ -47,7 +47,7 @@ class EntityUpdateNotificationWorkflow < Sequent::Workflow
           entity_update_notification_aggregate_id: event.aggregate_id,
           event_body: event.event_body
         })
-        Sequent.command_service.execute_commands start_match_command
+        execute_commands start_match_command
       end
     end
   end

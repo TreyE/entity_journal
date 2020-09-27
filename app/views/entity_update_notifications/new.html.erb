@@ -1,0 +1,7 @@
+<%= form_for @entity_update_notification, as: :entity_update_notification, url: entity_update_notifications_path do |f| %>
+
+  <%= f.text_area :event_body %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
