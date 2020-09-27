@@ -1,5 +1,24 @@
-<h1>HI</h1>
+<h1>Entity Update Notifications</h1>
 
-<% @entity_update_notifications.each do |record| %>
-  <%= record.aggregate_id %> <%= record.status %>
-<% end %>
+<h3><%= link_to 'Create New', new_entity_update_notification_path %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Version</th>
+      <th>Status</th>
+      <th>Entity Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entity_update_notifications.each do |record| %>
+      <tr>
+      <td><%= record.aggregate_id %></td>
+      <td><%= record.version %></td>
+      <td><%= record.status %></td>
+      <td><%= record.entity_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
