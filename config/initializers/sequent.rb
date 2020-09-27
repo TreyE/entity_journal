@@ -2,7 +2,9 @@ require_relative '../sequent_migrations'
 require_relative "../../app/sequent/init"
   
 Sequent.configure do |config|
-  config.logger = Logger.new(STDOUT)
+ config.database_schema_directory = 'config'
+
+ config.database_config_directory = 'config'
 
  config.migrations_class_name = 'SequentMigrations'
   
@@ -17,8 +19,6 @@ Sequent.configure do |config|
    EntityUpdateNotificationWorkflow.new,
    ExternalVerifiedFamilyMatchProjector.new
  ]
-
- config.database_config_directory = 'config'
     
  # this is the location of your sql files for your view_schema
  config.migration_sql_files_directory = 'db/sequent'
